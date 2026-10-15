@@ -1,6 +1,7 @@
-import type { LayoutServerLoad } from './$types';
-import auth from '#lib/server/auth.ts';
 import { redirect } from '@sveltejs/kit';
+
+import auth from '#lib/server/auth.ts';
+import type { LayoutServerLoad } from './$types';
 
 export const load: LayoutServerLoad = async ({ locals, request, url }) => {
 	const user = locals.user;

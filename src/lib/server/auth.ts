@@ -1,9 +1,9 @@
-import { getRequestEvent } from '$app/server';
 import { DATABASE_URL, IDP_CLIENT_ID, IDP_CLIENT_SECRET, IDP_URL } from '$app/env/private';
 import { S3_URL } from '$app/env/public';
+import { getRequestEvent } from '$app/server';
 import { betterAuth } from 'better-auth';
-import { sveltekitCookies } from 'better-auth/svelte-kit';
 import { genericOAuth } from 'better-auth/plugins';
+import { sveltekitCookies } from 'better-auth/svelte-kit';
 import { Pool } from 'pg';
 
 export default betterAuth({

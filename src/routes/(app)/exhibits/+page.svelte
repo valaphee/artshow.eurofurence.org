@@ -1,18 +1,21 @@
 <script lang="ts">
+	import type { PageProps } from './$types';
 	import Icon from '#lib/components/Icon.svelte';
 	import { faPlus } from '@fortawesome/free-solid-svg-icons';
 	import Button from '#lib/components/Button.svelte';
 	import Input from '#lib/components/Input.svelte';
 
-	let { data } = $props();
+	let { data }: PageProps = $props();
 
 	let exhibitQuery = $state('');
+	let exhibitQueryNormalized = $derived(exhibitQuery.trim().toLowerCase());
+
 	let filteredExhibits = $derived(
-		exhibitQuery.trim()
+		exhibitQueryNormalized
 			? data.exhibits.filter(
 					(exhibit) =>
-						String(exhibit.id) === exhibitQuery.trim() ||
-						exhibit.name.toLowerCase().includes(exhibitQuery.trim().toLowerCase())
+						String(exhibit.id) === exhibitQueryNormalized ||
+						exhibit.name.toLowerCase().includes(exhibitQueryNormalized)
 				)
 			: data.exhibits
 	);

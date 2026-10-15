@@ -1,6 +1,7 @@
-import auth from '#lib/server/auth.ts';
 import { building } from '$app/env';
 import { svelteKitHandler } from 'better-auth/svelte-kit';
+
+import auth from '#lib/server/auth.ts';
 
 export async function handle({ event, resolve }) {
 	const session = await auth.api.getSession({

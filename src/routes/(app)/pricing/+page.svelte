@@ -1,13 +1,13 @@
 <script lang="ts">
+	import type { PageProps } from './$types';
 	import Input from '#lib/components/Input.svelte';
 
-	let { data } = $props();
+	let { data }: PageProps = $props();
 
 	let exhibitId = $state('');
+
 	let filteredExhibits = $derived(
-		exhibitId.trim()
-			? data.exhibits.filter((exhibit) => String(exhibit.id) === exhibitId.trim())
-			: data.exhibits
+		exhibitId ? data.exhibits.filter((exhibit) => String(exhibit.id) === exhibitId) : data.exhibits
 	);
 	let groupedExhibits = $derived(
 		Object.entries(Object.groupBy(filteredExhibits, (exhibit) => exhibit.exhibition_space_id))
@@ -44,7 +44,7 @@
 				type="search"
 			/>
 
-			{#if needsAmount}
+			{#if winningBidId}
 				<Input bind:value={amount} autocomplete="off" placeholder="Enter amount..." type="number" />
 			{/if}
 		</div>

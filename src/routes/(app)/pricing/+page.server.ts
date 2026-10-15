@@ -1,9 +1,13 @@
-import type { PageServerLoad } from './$types';
 import { sql } from 'bun';
+
+import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const user = locals.user;
-	if (!user) return;
+	if (!user)
+		return {
+			exhibits: []
+		};
 
 	const exhibits = await sql<
 		{

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { LayoutProps } from './$types';
 	import Icon from '#lib/components/Icon.svelte';
 	import { efEmblem } from '#lib/icons.ts';
 	import {
@@ -13,7 +14,7 @@
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
 
-	let { data, children } = $props();
+	let { data, children }: LayoutProps = $props();
 
 	const navigation = [
 		{

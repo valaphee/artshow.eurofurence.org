@@ -14,6 +14,16 @@ export default defineConfig({
 				experimental: { async: true }
 			},
 			adapter: adapter(),
+			csp: {
+				directives: {
+					'default-src': ['self'],
+					'img-src': ['self', 'blob:', 'data:', 's3.eurofurence.org'],
+					'object-src': ['none'],
+					'script-src': ['strict-dynamic'],
+					'base-uri': ['none'],
+					'frame-ancestors': ['none']
+				}
+			},
 			experimental: { remoteFunctions: true, forkPreloads: true }
 		})
 	]
